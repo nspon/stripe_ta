@@ -15,6 +15,10 @@ Clone the repo:
 
     git clone https://github.com/nspon/stripe_ta.git
 
+Navigate to the root directory:
+
+    cd stripe_ta
+
 Open the no-extension **envvars** file, replace the environment variables dummy values
  with the accurate values of the following:
     
@@ -23,7 +27,13 @@ Open the no-extension **envvars** file, replace the environment variables dummy 
     STRIPE_SECRET_KEY - private Stripe API key
     STRIPE_PRICE_ID - Stripe product price ID
 
-(these should be given as they are, without the surrounding quotes or special characters)
+(Note: these should be given as they are, without the surrounding quotes or special characters)
+Example: 
+
+    SECRET_KEY=e8rfsd8gsdvfckxv8l
+    STRIPE_PUBLISHABLE_KEY=pk_test_4rf9ewj9ojersdfvmdxmvlkfdxmf
+    STRIPE_SECRET_KEY=sk_test_874yrfe8saifsdjosdjvofdjvd
+    STRIPE_PRICE_ID=price_3r89we87erud
 
 Run the docker-compose:
 
@@ -45,30 +55,36 @@ Clone the repo:
 
     git clone https://github.com/nspon/stripe_ta.git
 
+Navigate to the root directory:
+
+    cd stripe_ta
+
 Build a virtual environment titled **venv** and activate it:
 
     python -m venv venv
     venv\Scripts\activate
 
-At the root directory, create a .env file to store the environmental variables in this format:
+At the root directory, create a .env.bat file to store the environmental variables in this format
+(replace the dummy values with the actual ones). Example:
 
-    SECRET_KEY=e8rfsd8gsdvfckxv8l
-    STRIPE_PUBLISHABLE_KEY=pk_test_4rf9ewj9ojersdfvmdxmvlkfdxmf
-    STRIPE_SECRET_KEY=sk_test_874yrfe8saifsdjosdjvofdjvd
-    STRIPE_PRICE_ID=price_3r89we87erud
+    SET SECRET_KEY=e8rfsd8gsdvfckxv8l
+    SET STRIPE_PUBLISHABLE_KEY=pk_test_4rf9ewj9ojersdfvmdxmvlkfdxmf
+    SET STRIPE_SECRET_KEY=sk_test_874yrfe8saifsdjosdjvofdjvd
+    SET STRIPE_PRICE_ID=price_3r89we87erud
 
 (these should be given as they are, without the surrounding quotes or special characters)
 
-Install dependencies  
+Run .env.bat to set the variables:
+
+    call .env.bat
+
+Install dependencies:
 
     pip install -r requirements.txt
 
-Navigate to the **stripe_api** directory:
+Navigate to the **stripe_api** directory and start the server:
 
-    cd stripe_api
-
-Start the server  
-
+    cd stripe_api: 
     python manage.py runserver
 
 Navigate to localhost:8000/api/item/x in a browser to start the checkout for item numbered x.
