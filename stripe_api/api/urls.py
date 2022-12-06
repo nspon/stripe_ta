@@ -8,11 +8,6 @@ urlpatterns = [
         name='item'
     ),
     path(
-        'item/',
-        views.item,
-        name='item'
-    ),
-    path(
         'config/',
         views.stripe_config,
         name='config'

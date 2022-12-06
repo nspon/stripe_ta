@@ -1,2 +1,5 @@
+__pycache__/
+stripe_api/__pycache__
 venv
 .env.bat
+stripe_api/db.sqlite3

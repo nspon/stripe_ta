@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  web:
+    env_file:
+      - envvars
+    build: .
+    ports:
+      - "8000:8000"

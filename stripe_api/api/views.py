@@ -1,21 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.urls import reverse
-
 from django.conf import settings
-from django.views.generic import TemplateView, RedirectView, DetailView
 from django.views.decorators.csrf import csrf_exempt
 from .models import Item
-
 import stripe
 
 # Create your views here.
 
-def item(request, id: int = 0) -> HttpResponse:
+def item(request, id: int) -> HttpResponse:
     """A view for the requested item rendered with the `'item.html'` template.
 
     :param request: an incoming request, required default parameter.
-    :param id: (optional) id of the item selected.
+    :param id: id of the item selected.
     :return: a rendered HTTP response with the id passed.
     :rtype: HttpResponse 
     """
@@ -36,14 +32,14 @@ def stripe_config(request) -> JsonResponse:
         return JsonResponse(stripe_config, safe=False)
 
 @csrf_exempt
-def create_checkout_session(request, id) -> JsonResponse:
+def create_checkout_session(request, id: int) -> JsonResponse:
     """A view to instantiate a Stripe CheckoutSession object. Upon a successful payment, configures 
     a URL for the `'success/'` endpoint, with the sessionId passed as a query. A rejected 
     payment returns the item page via the `'item/{id}/'` endpoint. STRIPE_SECRET_KEY,
     STRIPE_PUBLISHABLE_KEY and STRIPE_PRICE_ID should be configured as environmental variables.
 
     :param request: an incoming request, required default parameter.
-    :param id (required) id of the item requested.
+    :param id: id of the item requested.
     :return: a JSON with the key-value pairs for the id Checkout session instantiated
     and Stripe public key.
     :rtype: JsonResponse
