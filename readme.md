@@ -1,7 +1,5 @@
 
-# Stripe integration  
-Import your existing Readme using the import button on the top right corner of the navbar, 
-or create a new Readme from scratch by typing in the editor.  
+# Stripe integration
 
 ## Launch options
 
